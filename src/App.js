@@ -15,17 +15,19 @@ export default class App extends React.Component {
         console.log(str);
         this.setState({ searchEvent: str });
     }
+    findEvent(str) {
+     return this.props.events.filter(event => 
+        event.event.toLowerCase().indexOf(str.toLowerCase()) > -1    
+    )
+  }
+
 
     render() {
-
-        return ( <
-            div className = "App" >
-            <
-            Input searchString = { e => this.updateSearchEventString(e) }
-            /> <
-            Results events = { this.props.events }
-            /> <
-            /div>
+        return ( 
+          <div className = "App" >
+            <Input searchString = { e => this.updateSearchEventString(e) }/> 
+            <Results events = {this.findEvent(this.state.searchEvent)}/> 
+          </div>
         );
     }
-}
+  }
