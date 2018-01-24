@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Selector(props) {
-    console.log(props.events);
     const filteredDates = props.events.filter((event, index) => {
         for (let i = 0; i < index; i++) {
             if (event.date === props.events[i].date) {
@@ -10,19 +9,24 @@ export default function Selector(props) {
         }
         return true;
     });
-    console.log(filteredDates);
 
-    const dates = filteredDates.map((event, index) => {
+    const sortedFilteredDates = filteredDates.sort((a,b) => a.date > b.date);
+
+    const dates = sortedFilteredDates.map((event, index) => {
       return ( 
-        <option key={index}
-            value={event.date} > {event.date} 
+        <option key={index} value={event.date}> 
+            {event.date} 
         </option>
       )
     })
 
     return ( 
-      <select onChange = { e => props.searchDate(e.target.value) }> 
-          {dates}
-      </select>
+    <form className="date">
+        <label htmlFor="date-filter">Date:</label>
+        <select id="date-filter" onChange = { e => props.searchDate(e.target.value) }> 
+            <option value="all">All</option>
+            {dates}
+        </select>
+    </form>
     )
 }

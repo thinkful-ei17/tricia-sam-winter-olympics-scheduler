@@ -9,7 +9,7 @@ export default class App extends React.Component {
         super(props);
         this.state = {
             searchEvent: '',
-            searchDate: '',
+            searchDate: 'all',
         }
     }
 
@@ -25,10 +25,13 @@ export default class App extends React.Component {
 
 
     findEvent(str, date) {
-     return this.props.events.filter(event => 
+     if (date === 'all'){
+         return this.props.events.filter(event => 
+            (event.event.toLowerCase().indexOf(str.toLowerCase()) > -1))
+     } else {return this.props.events.filter(event => 
         (event.event.toLowerCase().indexOf(str.toLowerCase()) > -1) &&
-        (event.date === date)  
-    )
+        (event.date === date)
+     )}  
     }
 
     render() {
