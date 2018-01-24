@@ -39,7 +39,7 @@ export default class App extends React.Component {
           <div className = "App" >
             <Input searchString = { e => this.updateSearchEventString(e) }/> 
             <Selector events={this.props.events} searchDate={e => this.updateSearchDate(e)}/>
-            <Results events={this.findEvent(this.state.searchEvent,this.state.searchDate)}/>
+            <Results events={this.findEvent(this.state.searchEvent, this.state.searchDate)}/>
           </div>
         );
     }

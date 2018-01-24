@@ -18,7 +18,7 @@ export default function Selector(props) {
             {event.date} 
         </option>
       )
-    })
+    });
 
     return ( 
     <form className="date">
