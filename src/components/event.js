@@ -16,7 +16,7 @@ export default function Event(props){
     })
 
     return(
-        <table>
+        <table className="results-table">
           <tbody>
             <tr>
                 <th>EVENT</th>

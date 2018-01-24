@@ -4,8 +4,7 @@ import Event from './event';
 export default function Results(props){
 
     return(
-        <div>
-            Testing
+        <div className="event">
             <Event events={props.events} />
         </div>
     )

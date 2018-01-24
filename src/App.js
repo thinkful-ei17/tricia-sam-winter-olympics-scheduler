@@ -2,6 +2,7 @@ import React from 'react';
 import './app.css';
 import Input from './components/input';
 import Results from './components/search-results';
+import Selector from './components/date-selector';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export default class App extends React.Component {
         return ( 
           <div className = "App" >
             <Input searchString = { e => this.updateSearchEventString(e) }/> 
+            <Selector events={this.props.events}/>
             <Results events = {this.findEvent(this.state.searchEvent)}/> 
           </div>
         );
