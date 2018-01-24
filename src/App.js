@@ -9,6 +9,7 @@ export default class App extends React.Component {
         super(props);
         this.state = {
             searchEvent: '',
+            searchDate: '',
         }
     }
 
@@ -16,19 +17,26 @@ export default class App extends React.Component {
         console.log(str);
         this.setState({ searchEvent: str });
     }
-    findEvent(str) {
-     return this.props.events.filter(event => 
-        event.event.toLowerCase().indexOf(str.toLowerCase()) > -1    
-    )
-  }
 
+    updateSearchDate(date) {
+      console.log(date);
+      this.setState({searchDate: date});
+    }
+
+
+    findEvent(str, date) {
+     return this.props.events.filter(event => 
+        (event.event.toLowerCase().indexOf(str.toLowerCase()) > -1) &&
+        (event.date === date)  
+    )
+    }
 
     render() {
         return ( 
           <div className = "App" >
             <Input searchString = { e => this.updateSearchEventString(e) }/> 
-            <Selector events={this.props.events}/>
-            <Results events = {this.findEvent(this.state.searchEvent)}/> 
+            <Selector events={this.props.events} searchDate={e => this.updateSearchDate(e)}/>
+            <Results events={this.findEvent(this.state.searchEvent,this.state.searchDate)}/>
           </div>
         );
     }
