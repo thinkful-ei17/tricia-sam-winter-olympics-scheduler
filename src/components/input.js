@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Input() {
+export default function Input(props) {
     return ( 
-      <form >
+      <form onSubmit={e => e.preventDefault()}>
         <label htmlFor = "search-bar">Event:</label> 
-        <input type = "text" id = "search-bar" onChange = { e => prop.searchString(e.target.value) }/> 
+        <input name="search" type = "text" id = "search-bar" onChange={e => props.searchString(e.target.value)}/> 
       </form>
     )
 }

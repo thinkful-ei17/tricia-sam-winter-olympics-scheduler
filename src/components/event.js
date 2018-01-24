@@ -4,11 +4,11 @@ export default function Event(props){
     
     const list = props.events.map((event, index) => {
         return (
-        <tr>
-            <td key={index}>
+        <tr key={index}>
+            <td >
                 {event.event}
             </td>
-            <td key={index}>
+            <td>
                 {event.date}
             </td>
         </tr>
@@ -17,11 +17,13 @@ export default function Event(props){
 
     return(
         <table>
+          <tbody>
             <tr>
                 <th>EVENT</th>
                 <th>DATE</th>
             </tr>
             {list}
+            </tbody>
         </table>
     )
 }
